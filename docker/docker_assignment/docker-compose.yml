@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    image: hello-count-flask:latest
+    build: .
+    ports:
+     - "5001:5001"
+    depends_on:
+      -  mydatabase
+
+
+  mydatabase:
+    image: redis:latest
+    restart: always
+    container_name: mydatabase
+    ports:
+      - "6379:6379"
